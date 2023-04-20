@@ -1,2 +1,2 @@
 # dicts
-Tổng hợp các dict khi paste một từ
+Tổng hợp tra cứu nhiều nguồn.

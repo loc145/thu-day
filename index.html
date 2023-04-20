@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicts </title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <div class="search-box">
+            <input type="text" placeholder="Search" onkeydown="handleKeyPress(event)">
+            <button id="search-button" onclick="enter()">Search</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="leftSide">
+            <iframe translate="no" id="oxford"></iframe>
+            <iframe translate="no" id="tracau"></iframe>
+            <button class="switch left" onclick="switchLeft()">switch</button>
+        </div>
+        <div class="rightSide">
+            <iframe translate="no" id="cambridge"></iframe>
+            <iframe translate="no" id="googleImg"></iframe>
+            <button class="switch right" onclick="switchRight()">switch</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+*{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+}
+.container{
+        margin: 80px 10px 10px 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+}
+header {
+        background-color: #f2f2f2;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        display: flex;
+        justify-content: flex-end;
+}
+input[type="text"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 300px;
+}
+#search-button {
+        background-color: #2b47e4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-left: 5px;
+        font-size: 16px;
+        cursor: pointer;
+}
+.search-box{
+        margin-right: 100px;
+}
+.leftSide, 
+.rightSide{
+        width: 100%;
+        position: relative;
+}
+#oxford,
+#tracau,
+#cambridge,
+#googleImg{
+        width: 100%;
+        height: 843px;
+        border: 1px solid black;
+        border-radius: 10px;
+}
+.switch{
+        position: absolute;
+        top: 10px;
+        height: 50px;
+        width: 100px;
+        background-color: #456104;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+}
+.left{
+        right: 10px;
+}
+.right{
+        left: 10px;
+}
