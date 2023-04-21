@@ -13,7 +13,7 @@ function enter(){
   tracau.setAttribute('src', `https://tracau.vn/?s=${inputValue}#tc-s`);
   cambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${inputValue}`);
   googleImg.setAttribute('src', `https://www.google.com/search?tbm=isch&q=${inputValue}`);
-  tiktok(inputValue);
+  longman(inputValue);
   //Copy to clipboard
   const textForClipboard = (str) => {
     return `${str} nghĩa là gì? _bingAI`;
@@ -26,12 +26,12 @@ function handleKeyPress(event) {
   }
 }
                     
-function tiktok(keyQuery){
+function longman(keyQuery){
     const width = 500;
     const height = 700;
     const top = Math.floor(screen.height/2 - height/2) - 100;
     const left = Math.floor(screen.width/2 - width/2);
-    let url = `https://www.tiktok.com/search/video?q=${keyQuery}`;
+    let url = `https://www.ldoceonline.com/dictionary/${keyQuery}`;
     window.open(
     url,
     'popUpWindow',
