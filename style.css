@@ -39,13 +39,15 @@ input[type="text"] {
 .search-box{
         margin-right: 100px;
 }
-.leftSide, 
+.leftSide,
+.middle, 
 .rightSide{
         width: 100%;
         position: relative;
 }
 #oxford,
 #tracau,
+#longman,
 #cambridge,
 #googleImg{
         width: 100%;
