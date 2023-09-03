@@ -1,63 +1,87 @@
-const oxford = document.querySelector('#oxford');
-const tracau = document.querySelector('#tracau');
-const cambridge = document.querySelector('#cambridge');
-const googleImg = document.querySelector('#googleImg');
-const longman = document.querySelector('#longman');
-const input = document.querySelector('input')
-tracau.setAttribute('style', 'display: none;');
-googleImg.setAttribute('style', 'display: none;');
+const dictOxford = document.querySelector('.js-oxford');
+const dictLongman = document.querySelector('.js-longman');
+const dictCambridge = document.querySelector('.js-cambridge');
+const dictTracau = document.querySelector('.js-tracau');
+const dictGgImg = document.querySelector('.js-gg-img');
 
-function enter(){
-  let inputValue = input.value;
-  input.value = '';
-  oxford.setAttribute('src', `https://www.oxfordlearnersdictionaries.com/definition/english/${inputValue}`);
-  tracau.setAttribute('src', `https://tracau.vn/?s=${inputValue}#tc-s`);
-  cambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${inputValue}`);
-  googleImg.setAttribute('src', `https://www.google.com/search?tbm=isch&q=${inputValue}`);
-  longman.setAttribute('src', `https://www.ldoceonline.com/dictionary/${inputValue}`)
-  //Copy to clipboard
-  // const textForClipboard = (str) => {
-  //   return `${str} nghĩa là gì? _bingAI`;
-  // }
-  // navigator.clipboard.writeText(textForClipboard(inputValue));
+const select1 = document.querySelector('.js-select-1');
+const select2 = document.querySelector('.js-select-2');
+const select3 = document.querySelector('.js-select-3');
+const select4 = document.querySelector('.js-select-4');
+const select5 = document.querySelector('.js-select-5');
+
+
+const bounce = document.querySelector(".js-bounce");
+const bounceInput = document.querySelector(".js-bounce__input");
+const input = document.querySelector(".js-input");
+const search = document.querySelector('.js-search');
+const switching = document.querySelector('.js-switch');
+
+const iframeOxford = document.querySelector('.js-oxford iframe');
+const iframeLongman = document.querySelector('.js-longman iframe');
+const iframeCambridge = document.querySelector('.js-cambridge iframe');
+const iframeTracau = document.querySelector('.js-tracau iframe');
+const iframeGgImg = document.querySelector('.js-gg-img iframe');
+
+function assignDisplay(...arr){
+    arr[0]? dictOxford.classList.add('dict--appear') : dictOxford.classList.remove('dict--appear');
+    arr[1]? dictLongman.classList.add('dict--appear') : dictLongman.classList.remove('dict--appear');
+    arr[2]? dictCambridge.classList.add('dict--appear') : dictCambridge.classList.remove('dict--appear');
+    arr[3]? dictTracau.classList.add('dict--appear') : dictTracau.classList.remove('dict--appear');
+    arr[4]? dictGgImg.classList.add('dict--appear') : dictGgImg.classList.remove('dict--appear');
 }
+
+select1.addEventListener("click", ()=>{
+    assignDisplay(1,0,0,0,0);
+});
+select2.addEventListener("click", ()=>{
+    assignDisplay(0,1,0,0,0);
+});
+select3.addEventListener("click", ()=>{
+    assignDisplay(0,0,1,0,0);
+});
+select4.addEventListener("click", ()=>{
+    assignDisplay(0,0,0,1,0);
+});
+select5.addEventListener("click", ()=>{
+    assignDisplay(0,0,0,0,1);
+});
+
+switching.addEventListener("click", ()=>{
+    dictOxford.classList.toggle('dict--disappear');
+    dictLongman.classList.toggle('dict--disappear');
+    dictCambridge.classList.toggle('dict--disappear');
+    dictTracau.classList.toggle('dict--disappear');
+    dictGgImg.classList.toggle('dict--disappear');
+});
+
+search.addEventListener("click", ()=>{
+    let inputDisplayed = window.getComputedStyle(input);
+    if(inputDisplayed.getPropertyValue('display') === 'none'){
+        /* bounce__input */
+        bounceInput.focus();
+        bounce.classList.toggle('bounce--drop');
+        bounceInput.value='';
+    }else{
+        /* header__input */
+        input.value='';
+        input.focus();
+    }
+});
+
+function find(word){
+    iframeOxford.setAttribute('src', `https://www.oxfordlearnersdictionaries.com/definition/english/${word}`);
+    iframeLongman.setAttribute('src', `https://www.ldoceonline.com/dictionary/${word}`);
+    iframeCambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${word}`);
+    iframeTracau.setAttribute('src', `https://tracau.vn/?s=${word}#tc-s`);
+    iframeGgImg.setAttribute('src', `https://www.google.com/search?tbm=isch&q=${word}`);
+}
+
 function handleKeyPress(event) {
-  if (event.keyCode === 13) {
-    enter()
-  }
-}
-                    
-// function longman(keyQuery){
-//     const width = 500;
-//     const height = 700;
-//     const top = Math.floor(screen.height/2 - height/2) - 100;
-//     const left = Math.floor(screen.width/2 - width/2);
-//     let url = `https://www.ldoceonline.com/dictionary/${keyQuery}`;
-//     window.open(
-//     url,
-//     'popUpWindow',
-//     `width=${width}, height=${height}, top=${top}, left=${left},
-//     toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes`); 
-// }
-
-function switchLeft(){
-  const tracauDisplay = tracau.getAttribute('style');
-  if(tracauDisplay == 'display: none;'){
-    oxford.setAttribute('style', 'display: none;');
-    tracau.setAttribute('style', "");
-  } else{
-    oxford.setAttribute('style', "");
-    tracau.setAttribute('style', 'display: none;');
-  }
-}
-
-function switchRight(){
-  const googleImgDisplay = googleImg.getAttribute('style');
-  if(googleImgDisplay == 'display: none;'){
-    cambridge.setAttribute('style', 'display: none;');
-    googleImg.setAttribute('style', "");
-  } else{
-    cambridge.setAttribute('style', "");
-    googleImg.setAttribute('style', 'display: none;');
-  }
+    if (event.keyCode === 13) {
+        bounce.classList.remove('bounce--drop');
+        bounceInput.value?find(bounceInput.value):find(input.value);
+        bounceInput.value='';
+        input.value='';
+    }
 }

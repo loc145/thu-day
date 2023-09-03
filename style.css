@@ -1,76 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Rubik+Iso&display=swap');
+
 *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+    box-sizing: border-box;
 }
-.container{
-        margin: 80px 10px 10px 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 10px;
+
+iframe{
+    width: 100%;
+    height: 100%;
 }
-header {
-        background-color: #f2f2f2;
-        padding: 10px;
-        position: fixed;
-        top: 0;
+
+.dict{
+    border: 1px black solid;
+    display: flex;
+    gap: 0 0.5rem;
+    justify-content: center;
+    height: calc(100vh - 3.7rem);
+}
+
+.dict div{
+    border: 1px black solid;
+    flex-basis: 100%;
+}
+.header{
+    height: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+/* .dict__oxford{
+    background-color: lightblue;
+}
+.dict__longman{
+    background-color: lightcoral;
+}
+.dict__cambridge{
+    background-color: yellowgreen;
+}
+.dict__tracau{
+    background-color: grey;
+}
+.dict__gg-img{
+    background-color: lightsalmon;
+} */
+.dict--disappear{
+    display: none;
+}
+.header__select{
+    display: none;
+    font-size: 1.5rem;
+}
+.header__search{
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: whitesmoke;
+    grid-column: 5 / 6;
+    max-width: 10rem;
+    font-size: 1.5rem;
+    background-color: #fae660;
+}
+.header__switch{
+    grid-column: 2 / 3;
+    justify-self: end;
+    max-width: 10rem;
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: #fae660;
+}
+.bounce{
+    display: none;
+}
+.header__input{
+    grid-column: 3 / 5;
+    caret-color: #ec4899;
+    font-size: 1.5rem;
+}
+.header__input:focus{
+    border: 2px solid #ec4899;
+    outline: none;
+}
+@media (max-width: 768px) {
+    .dict{
+        gap: 0;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+    .dict div{
+        flex-basis: auto;
+        border: 0;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
         width: 100%;
-        z-index: 999;
+    }
+    .dict__oxford,
+    .dict__cambridge,
+    .dict__longman,
+    .dict__tracau,
+    .dict__gg-img{
+        display: none;
+    }
+    .dict--appear{
+        display: initial;
+    }
+    .header__select{
         display: flex;
-        justify-content: flex-end;
-}
-input[type="text"] {
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        width: 300px;
-}
-#search-button {
-        background-color: #2b47e4;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        margin-left: 5px;
-        font-size: 16px;
-        cursor: pointer;
-}
-.search-box{
-        margin-right: 100px;
-}
-.leftSide,
-.middle, 
-.rightSide{
-        width: 100%;
-        position: relative;
-}
-#oxford,
-#tracau,
-#longman,
-#cambridge,
-#googleImg{
-        width: 100%;
-        height: 843px;
-        border: 1px solid black;
-        border-radius: 10px;
-}
-.switch{
-        position: absolute;
-        top: 10px;
-        height: 50px;
-        width: 100px;
-        background-color: #456104;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
-}
-.left{
-        right: 10px;
-}
-.right{
-        left: 10px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Indie Flower', cursive;
+        font-family: 'Rubik Iso', cursive;
+        background-color: #fee6e3;
+    }
+    .bounce{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        position: fixed;
+        width: calc(100% - 1rem);
+        top: -3rem;
+        transition: top 0.5s cubic-bezier(.25,.75,.2,1);
+    }
+    .bounce--drop{
+        top: 0.42rem;
+    }
+    .bounce__input{
+        grid-column: 1 / 6;
+        height: 2.7rem;
+        caret-color: #ec4899;
+        font-size: 1.5rem;
+    }
+    .bounce__input:focus{
+        border: 2px solid #ec4899;
+        outline: none;
+    }
+    .header__switch{
+        display: none;
+    }
+    .header__search{
+        grid-column: 6 / 7;
+        z-index: 1;
+    }
+    .header__input{
+        display: none;
+    }
 }
