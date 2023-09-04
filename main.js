@@ -56,31 +56,40 @@ switching.addEventListener("click", ()=>{
 });
 
 search.addEventListener("click", ()=>{
-    let inputDisplayed = window.getComputedStyle(input);
-    if(inputDisplayed.getPropertyValue('display') === 'none'){
-        /* bounce__input */
-        bounceInput.focus();
-        bounce.classList.toggle('bounce--drop');
-        bounceInput.value='';
-    }else{
+    let bounceProperties = window.getComputedStyle(bounce);
+    if(bounceProperties.getPropertyValue('display') === 'none'){
         /* header__input */
         input.value='';
         input.focus();
+
+    }else{
+        /* bounce__input -- unhiden */
+        bounce.classList.toggle('bounce--drop');
+        bounceInput.value='';
+
+        /* bounce__input -- hidden */
+        if(bounce.classList.contains('bounce--drop')){
+            bounceInput.focus();
+        }else{
+            bounceInput.blur(); //remove focus
+        }
     }
 });
 
 function find(word){
-    iframeOxford.setAttribute('src', `https://www.oxfordlearnersdictionaries.com/definition/english/${word}`);
-    iframeLongman.setAttribute('src', `https://www.ldoceonline.com/dictionary/${word}`);
-    iframeCambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${word}`);
-    iframeTracau.setAttribute('src', `https://tracau.vn/?s=${word}#tc-s`);
-    iframeGgImg.setAttribute('src', `https://www.google.com/search?tbm=isch&q=${word}`);
+    let low_word = word.toLowerCase();
+    iframeOxford.setAttribute('src', `https://www.oxfordlearnersdictionaries.com/definition/english/${low_word}`);
+    iframeLongman.setAttribute('src', `https://www.ldoceonline.com/dictionary/${low_word}`);
+    iframeCambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${low_word}`);
+    iframeTracau.setAttribute('src', `https://tracau.vn/?s=${low_word}#tc-s`);
+    iframeGgImg.setAttribute('src', `https://www.google.com/search?tbm=isch&q=${low_word}`);
 }
 
 function handleKeyPress(event) {
     if (event.keyCode === 13) {
         bounce.classList.remove('bounce--drop');
         bounceInput.value?find(bounceInput.value):find(input.value);
+        bounceInput.blur();
         bounceInput.value='';
         input.value='';
     }
