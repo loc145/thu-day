@@ -59,19 +59,23 @@ search.addEventListener("click", ()=>{
     let bounceProperties = window.getComputedStyle(bounce);
     if(bounceProperties.getPropertyValue('display') === 'none'){
         /* header__input */
+        if(input.value)
+            find(input.value);
         input.value='';
         input.focus();
 
     }else{
         /* bounce__input -- unhiden */
         bounce.classList.toggle('bounce--drop');
-        bounceInput.value='';
-
+        
         /* bounce__input -- hidden */
         if(bounce.classList.contains('bounce--drop')){
             bounceInput.focus();
         }else{
             bounceInput.blur(); //remove focus
+            if(bounceInput.value)
+                find(bounceInput.value);
+            bounceInput.value='';
         }
     }
 });
