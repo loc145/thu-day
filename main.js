@@ -2,7 +2,7 @@ const dictOxford = document.querySelector('.js-oxford');
 const dictLongman = document.querySelector('.js-longman');
 const dictCambridge = document.querySelector('.js-cambridge');
 const dictTracau = document.querySelector('.js-tracau');
-const dictGgImg = document.querySelector('.js-gg-img');
+const dictGgNews = document.querySelector('.js-gg-news');
 
 const select1 = document.querySelector('.js-select-1');
 const select2 = document.querySelector('.js-select-2');
@@ -21,14 +21,14 @@ const iframeOxford = document.querySelector('.js-oxford iframe');
 const iframeLongman = document.querySelector('.js-longman iframe');
 const iframeCambridge = document.querySelector('.js-cambridge iframe');
 const iframeTracau = document.querySelector('.js-tracau iframe');
-const iframeGgImg = document.querySelector('.js-gg-img iframe');
+const iframeGgNews = document.querySelector('.js-gg-news iframe');
 
 function assignDisplay(...arr){
     arr[0]? dictOxford.classList.add('dict--appear') : dictOxford.classList.remove('dict--appear');
     arr[1]? dictLongman.classList.add('dict--appear') : dictLongman.classList.remove('dict--appear');
     arr[2]? dictCambridge.classList.add('dict--appear') : dictCambridge.classList.remove('dict--appear');
     arr[3]? dictTracau.classList.add('dict--appear') : dictTracau.classList.remove('dict--appear');
-    arr[4]? dictGgImg.classList.add('dict--appear') : dictGgImg.classList.remove('dict--appear');
+    arr[4]? dictGgNews.classList.add('dict--appear') : dictGgNews.classList.remove('dict--appear');
 }
 
 select1.addEventListener("click", ()=>{
@@ -52,7 +52,7 @@ switching.addEventListener("click", ()=>{
     dictLongman.classList.toggle('dict--disappear');
     dictCambridge.classList.toggle('dict--disappear');
     dictTracau.classList.toggle('dict--disappear');
-    dictGgImg.classList.toggle('dict--disappear');
+    dictGgNews.classList.toggle('dict--disappear');
 });
 
 search.addEventListener("click", ()=>{
@@ -86,7 +86,7 @@ function find(word){
     iframeLongman.setAttribute('src', `https://www.ldoceonline.com/dictionary/${low_word}`);
     iframeCambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${low_word}`);
     iframeTracau.setAttribute('src', `https://tracau.vn/?s=${low_word}#tc-s`);
-    iframeGgImg.setAttribute('src', `https://www.google.com/search?tbm=isch&q=${low_word}`);
+    iframeGgNews.setAttribute('src', `https://www.google.com/search?tbm=nws&q=${low_word}`);
 }
 
 function handleKeyPress(event) {

@@ -40,7 +40,7 @@ iframe{
 .dict__tracau{
     background-color: grey;
 }
-.dict__gg-img{
+.dict__gg-news{
     background-color: lightsalmon;
 } */
 .dict--disappear{
@@ -100,7 +100,7 @@ iframe{
     .dict__cambridge,
     .dict__longman,
     .dict__tracau,
-    .dict__gg-img{
+    .dict__gg-news{
         display: none;
     }
     .dict--appear{
