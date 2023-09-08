@@ -95,7 +95,7 @@ function find(word){
     iframeLongman.setAttribute('src', `https://www.ldoceonline.com/dictionary/${low_word}`);
     iframeCambridge.setAttribute('src', `https://dictionary.cambridge.org/vi/dictionary/english/${low_word}`);
     iframeTracau.setAttribute('src', `https://tracau.vn/?s=${low_word}`);
-    iframeGgNews.setAttribute('src', `https://www.google.com/search?tbm=nws&q=${low_word}`);
+    iframeGgNews.setAttribute('src', `https://news.google.com/search?q=${low_word}`);
 }
 
 function handleKeyPress(event) {
